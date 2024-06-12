@@ -7,6 +7,7 @@ use App\Models\Project;
 use App\Models\Technology;
 use App\Models\Type;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 
 class ProjectController extends Controller
 {
@@ -86,7 +87,7 @@ class ProjectController extends Controller
     {
         $request->validate([
             'title' => 'required|max:150',
-            'repo' => 'required|unique:projects',
+            'repo' => 'required|unique:projects,repo,' . $project->id,
             'type_id' => 'nullable|exists:types,id',
             'technologies' => 'nullable|exists:technologies,id'
         ]);
