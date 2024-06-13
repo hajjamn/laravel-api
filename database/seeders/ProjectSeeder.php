@@ -34,9 +34,9 @@ class ProjectSeeder extends Seeder
 
             $project->repo = Str::slug($title, '-');
 
-            $project->description = $faker->optional()->text(200);
+            $project->description = $faker->text(200);
 
-            $project->type_id = $faker->optional()->randomElement($types_ids);
+            $project->type_id = $faker->randomElement($types_ids);
 
             $project->save();
 
